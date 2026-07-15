@@ -164,7 +164,7 @@ class PriceOptimizer:
             
             optimal_prices.append(optimal_price)
         
-        return np.array(optimal_prices)
+        return np.array(optimal_prices)    
     
     def get_feature_importance(self):
         """Get feature importance from both models"""

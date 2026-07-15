@@ -1,236 +1,339 @@
-# Dynamic Pricing Optimization Platform
+# PricePilot AI
 
-A machine learning-powered analytics platform that helps financial institutions optimize product pricing, segment customers, validate pricing strategies through A/B testing, and estimate long-term business impact using statistical and financial analysis.
+> AI-powered Dynamic Pricing Intelligence & Product Analytics Platform
 
-The platform simulates how organizations can make data-driven pricing decisions by combining customer analytics, predictive machine learning models, hypothesis testing, and revenue forecasting into a single interactive dashboard.
+PricePilot AI is an end-to-end product analytics platform that helps businesses optimize product pricing using Machine Learning, customer segmentation, experimentation, and business intelligence.
 
----
-
-## Business Problem
-
-Financial institutions continuously struggle with determining optimal pricing for products such as personal loans, credit cards, and mortgages.
-
-Pricing products too low reduces profitability, while pricing them too high decreases customer conversion and market competitiveness.
-
-Traditional pricing approaches often fail to simultaneously consider:
-
-- Customer behavior
-- Risk profiles
-- Expected conversion rates
-- Revenue impact
-- Statistical significance of pricing changes
-- Long-term business outcomes
-
-This project addresses these challenges by providing an end-to-end pricing optimization platform that enables data-driven decision making.
+The platform combines predictive analytics with executive dashboards to enable product managers and business teams to make data-driven pricing decisions.
 
 ---
 
-## Solution
+# Business Problem
 
-The platform consists of four integrated analytical modules:
+Traditional pricing strategies often rely on manual rules and historical intuition.
 
-### 1. Customer Segmentation
+This leads to:
 
-- K-Means clustering
-- Customer profiling
-- Segment comparison
-- Customer Lifetime Value (CLV) analysis
-- Strategic recommendations
-- Interactive visualization dashboard
+- Lost revenue opportunities
+- Poor customer segmentation
+- Low pricing accuracy
+- Inefficient experimentation
+- Limited visibility into business performance
 
----
-
-### 2. Price Optimization
-
-Gradient Boosting models predict:
-
-- Optimal product pricing
-- Expected customer conversion
-- Revenue lift
-- Price sensitivity
-
-Includes:
-
-- Feature importance analysis
-- Business simulator
-- Revenue optimization
-- Scenario analysis
+Organizations require a centralized platform capable of analyzing customer behavior, market trends, pricing experiments, and revenue impact in real time.
 
 ---
 
-### 3. A/B Testing Framework
+# Solution
 
-Statistically validates pricing strategies using:
+PricePilot AI addresses these challenges by combining:
 
-- Hypothesis testing
-- Confidence intervals
-- Chi-Square Test
-- Independent T-Test
-- Statistical Power Analysis
-- Effect Size (Cohen's d)
-- Decision Framework
-- Risk Assessment
+- Machine Learning based Price Optimization
+- Customer Segmentation
+- Revenue Analytics
+- A/B Testing Framework
+- Pricing Strategy Simulator
+- Executive Analytics Dashboard
+- Decision Intelligence Engine
+- Product Funnel & Growth Analytics
 
----
-
-### 4. Revenue Impact Analysis
-
-Evaluates business impact through:
-
-- Revenue forecasting
-- ROI estimation
-- Multi-year projections
-- CLV analysis
-- Financial health indicators
-- Executive summary
-- Strategic recommendations
+The platform enables product managers to identify pricing opportunities, estimate business impact, analyze customer journeys, and monitor growth metrics.
 
 ---
 
-# Features
-
-- Interactive Streamlit dashboard
-- Customer segmentation using K-Means
-- Gradient Boosting pricing engine
-- Conversion prediction
-- Price sensitivity analysis
-- Statistical A/B testing
-- Revenue optimization
-- Customer Lifetime Value analysis
-- ROI calculator
-- Financial projections
-- Exportable analytical reports
-- Business recommendation engine
-
----
-
-# Machine Learning Models
-
-| Task | Algorithm |
-|-------|-----------|
-| Customer Segmentation | K-Means Clustering |
-| Price Prediction | Gradient Boosting Regressor |
-| Conversion Prediction | Gradient Boosting Regressor |
-
----
-
-# Statistical Methods
-
-The platform incorporates multiple statistical techniques including:
-
-- Hypothesis Testing
-- Chi-Square Test
-- Independent Sample T-Test
-- Confidence Interval Estimation
-- Statistical Power Analysis
-- Effect Size (Cohen's d)
-- Revenue Impact Analysis
-
----
-
-# Dashboard Modules
-
-## Home Dashboard
-
-Provides a high-level overview of:
-
-- Customer segments
-- Product categories
-- Active experiments
-- Revenue insights
-- Market trends
-
----
+# Key Features
 
 ## Customer Segmentation
 
-- Customer distribution
-- Cluster visualization
-- Radar chart comparison
-- Segment profiles
-- CLV analysis
-- Model evaluation
+- K-Means clustering
+- Customer profiling
+- Risk categorization
+- Segment visualization
 
 ---
 
-## Price Optimization
+## Dynamic Price Optimization
 
-- Pricing recommendations
-- Model performance
-- Feature importance
-- Revenue simulator
-- Price sensitivity analysis
-
----
-
-## A/B Testing
-
-- Statistical significance testing
-- Confidence intervals
-- Daily performance tracking
-- Statistical power
-- Decision framework
-- Risk assessment
+- Gradient Boosting Regressor
+- Optimal price prediction
+- Revenue estimation
+- Conversion prediction
 
 ---
 
-## Revenue Analysis
+## Revenue Analytics
 
-- Revenue projection
-- ROI analysis
-- CLV impact
-- Multi-year forecast
-- Executive summary
-- Strategic recommendations
+- Revenue Lift Analysis
+- Product Performance
+- Revenue Distribution
+- Customer Value Analysis
+
+---
+
+## A/B Testing Framework
+
+- Pricing experiment comparison
+- Statistical significance
+- Confidence estimation
+- Revenue impact analysis
+
+---
+
+## Pricing Strategy Simulator
+
+Interactive simulator supporting:
+
+- Competitor pricing
+- Customer demand
+- Inventory
+- Marketing spend
+- Seasonal effects
+
+Outputs include:
+
+- Recommended Price
+- Expected Revenue
+- Expected Profit
+- Revenue Lift
+- Executive Recommendation
+
+---
+
+## Executive Analytics Dashboard
+
+Business KPIs including:
+
+- Revenue
+- Revenue Lift
+- Average Selling Price
+- Business Health Score
+
+Visualizations include:
+
+- Product Contribution
+- Customer Segments
+- Risk Distribution
+- Interest Rate Trends
+
+---
+
+## Decision Intelligence Center
+
+AI-generated recommendations with:
+
+- Priority
+- Business Impact
+- Confidence Score
+- Estimated Revenue Gain
+- Recommendation Owner
+- Executive Action Plan
+
+---
+
+## Product Funnel & Growth Analytics
+
+Tracks customer journey across:
+
+Visitors
+
+↓
+
+Product View
+
+↓
+
+Started Application
+
+↓
+
+Approved
+
+↓
+
+Purchased
+
+↓
+
+Retained
+
+Includes:
+
+- Funnel Conversion
+- Growth Metrics
+- Feature Impact Analysis
+- AI Product Insights
+
+---
+
+# Machine Learning Pipeline
+
+```
+Customer Data
+       │
+       ▼
+Data Generation
+       │
+       ▼
+Feature Engineering
+       │
+       ▼
+Customer Segmentation
+       │
+       ▼
+Price Optimization Model
+       │
+       ▼
+Revenue Prediction
+       │
+       ▼
+Decision Intelligence
+       │
+       ▼
+Executive Dashboard
+```
+
+---
+
+# System Architecture
+
+```
+Streamlit UI
+
+│
+
+├── Services
+│   ├── Data Service
+│   ├── Analytics Service
+│   ├── Recommendation Service
+│   ├── Pricing Service
+│   └── Model Service
+│
+├── Machine Learning Models
+│   ├── Customer Segmentation
+│   └── Price Optimizer
+│
+├── Synthetic Data Generator
+│
+└── Business Dashboards
+```
+
+---
+
+# Tech Stack
+
+### Frontend
+
+- Streamlit
+- Plotly
+
+### Machine Learning
+
+- Scikit-Learn
+- Gradient Boosting
+- K-Means
+
+### Data Processing
+
+- Pandas
+- NumPy
+
+### Programming Language
+
+- Python
 
 ---
 
 # Project Structure
 
 ```
-Dynamic-Pricing-Optimization-Platform
+PricePilot-AI
 │
 ├── app.py
-├── pages
-│   ├── Customer_Segmentation.py
-│   ├── Price_Optimization.py
-│   ├── AB_Testing.py
-│   └── Revenue_Analysis.py
 │
-├── data
-├── models
+├── pages
+│   ├── Customer Segmentation
+│   ├── Price Optimization
+│   ├── A/B Testing
+│   ├── Revenue Analysis
+│   ├── Pricing Strategy Simulator
+│   ├── Executive Analytics
+│   ├── Decision Intelligence
+│   └── Product Funnel & Growth Analytics
+│
+├── services
+│   ├── analytics_service.py
+│   ├── data_service.py
+│   ├── model_service.py
+│   ├── pricing_service.py
+│   └── recommendation_service.py
+│
 ├── utils
+│   ├── data_generator.py
+│   ├── metrics.py
+│   └── models.py
+│
+├── assets
+│
 ├── requirements.txt
+│
 └── README.md
 ```
 
 ---
 
-# Technology Stack
+# Screenshots
 
-### Programming
+## Home Dashboard
 
-- Python
+![alt text](assets/home.png)
 
-### Machine Learning
+---
 
-- Scikit-learn
-- XGBoost
+## Customer Segmentation
 
-### Data Processing
+![alt text](assets/customer_segmentation.png)
 
-- Pandas
-- NumPy
-- SciPy
+---
 
-### Visualization
+## Price Optimization
 
-- Plotly
-- Matplotlib
+![alt text](assets/Price_Optimization.png)
 
-### Web Framework
+---
 
-- Streamlit
+## Revenue Analytics
+
+![alt text](assets/Revenue_Impact.png)
+
+---
+
+## A/B Testing
+
+![alt text](assets/AB_testing.png)
+
+---
+
+## Pricing Strategy Simulator
+
+![alt text](assets/Price_Optimization.png)
+
+---
+
+## Executive Analytics
+
+![alt text](assets/Executive_Analytics.png)
+
+---
+
+## Decision Intelligence
+
+![alt text](assets/Decision_Intelligence.png)
+
+---
+
+## Product Funnel & Growth Analytics
+
+![alt text](assets/Funnel.png)
 
 ---
 
@@ -239,13 +342,13 @@ Dynamic-Pricing-Optimization-Platform
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/dynamic-pricing-optimization-platform.git
+git clone https://github.com/Kaniishk005/Dynamic-Pricing-Optimization.git
 ```
 
-Move into the project directory
+Navigate to the project
 
 ```bash
-cd dynamic-pricing-optimization-platform
+cd Dynamic-Pricing-Optimization
 ```
 
 Install dependencies
@@ -262,82 +365,35 @@ streamlit run app.py
 
 ---
 
-# Sample Workflow
+# Future Enhancements
 
-Customer Data
-
-↓
-
-Customer Segmentation
-
-↓
-
-Price Optimization
-
-↓
-
-A/B Testing
-
-↓
-
-Revenue Forecasting
-
-↓
-
-Business Decision
+- Real-world pricing datasets
+- Demand forecasting using time-series models
+- Customer Lifetime Value prediction
+- Cohort analysis
+- Churn prediction
+- Personalized pricing recommendations
+- Explainable AI for pricing decisions
+- Cloud deployment on AWS/Azure
+- REST API integration
+- Automated monitoring and alerting
 
 ---
 
-# Business Value
+# Business Impact
 
-The platform enables organizations to:
+PricePilot AI demonstrates how Product Analytics and Machine Learning can work together to improve business decision-making.
 
-- Improve pricing decisions using machine learning
-- Identify high-value customer segments
-- Quantify pricing impact before deployment
-- Validate pricing experiments statistically
-- Forecast long-term revenue outcomes
-- Estimate return on investment
-- Support business stakeholders with data-driven insights
+The platform helps organizations:
 
----
-
-# Screenshots
-
-### Home
-
-![Home](assets\home.png)
-
-### Customer Segmentation
-
-![Customer Segmentation](assets\customer-segmentation.png)
-
-### Price Optimization
-
-![Price Optimization](assets\price-optimisation.png)
-
-### A/B Testing
-
-![A/B Testing](assets\ab-testing.png)
-
-### Revenue Analysis
-
-![Revenue Analysis](assets\revenue-impact.png)
-
----
-
-# Future Improvements
-
-Planned enhancements include:
-
-- SHAP-based model explainability
-- LLM-powered executive summaries
-- FastAPI deployment for prediction APIs
-- Real-time streaming data support
-- PostgreSQL integration
-- Automated report generation (PDF)
-- Docker containerization
-- Cloud deployment on AWS
+- Optimize pricing strategies
+- Increase revenue
+- Improve conversion
+- Analyze customer journeys
+- Evaluate product features
+- Monitor business performance
+- Generate executive recommendations
+- Support data-driven product decisions
 
 ---
 
@@ -345,10 +401,9 @@ Planned enhancements include:
 
 **Kanishk Tiwari**
 
-B.Tech Computer Science
+Computer Science Undergraduate
 
-Netaji Subhas University of Technology (NSUT)
-
-Interested in Machine Learning, Data Science, Backend Development, and Business Analytics.
+GitHub:
+https://github.com/Kaniishk005
 
 ---

@@ -2,9 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-from utils.data_generator import generate_customer_data, generate_market_data
-from utils.models import CustomerSegmentation, PriceOptimizer
-from utils.metrics import calculate_clv, calculate_conversion_rate
+from services.data_service import load_data
+from services.model_service import get_models
+from services.analytics_service import get_dashboard_metrics
+from services.recommendation_service import generate_recommendations
+
 
 # Configure page
 st.set_page_config(
@@ -14,21 +16,62 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+
+metrics = get_dashboard_metrics()
+recommendations = generate_recommendations()
+
+
 # Main title    
 st.title("PricePilot AI")
-st.info(
-"""
+st.info(f"""
 ### Executive Summary
 
-Revenue increased **12.6%** compared to last month.
+Revenue optimization is delivering an average lift of **{metrics['revenue_lift']:.1f}%**.
 
-AI has identified **3 pricing opportunities** capable of improving
-profitability while maintaining customer conversion.
+AI has generated **{len(recommendations)}** business recommendations.
 
-Latest pricing experiment generated an estimated **8.7% revenue lift**.
-"""
-)
+Current optimized revenue stands at **₹{metrics['total_revenue']/1e6:.2f}M**.
+""")
 st.markdown("### Dynamic Pricing Intelligence & Product Analytics Platform")
+st.subheader("Business Problem")
+
+st.write("""
+Organizations often rely on static pricing strategies that fail to adapt to
+changing customer demand, competitor pricing, and market conditions.
+
+As a result, businesses lose revenue opportunities, struggle to identify
+high-value customer segments, and lack visibility into pricing performance.
+""")
+
+st.subheader("Business Solution")
+
+st.write("""
+PricePilot AI is an AI-powered Product Analytics platform that combines
+Machine Learning, Pricing Optimization, Customer Segmentation,
+A/B Testing, Growth Analytics, and Executive Dashboards to help
+business teams make data-driven pricing decisions.
+""")
+st.subheader("Business Impact")
+
+impact1, impact2, impact3 = st.columns(3)
+
+with impact1:
+    st.metric(
+        "Revenue Growth",
+        "+12.6%"
+    )
+
+with impact2:
+    st.metric(
+        "Pricing Accuracy",
+        "96%"
+    )
+
+with impact3:
+    st.metric(
+        "Decision Time",
+        "-38%"
+    )
 
 # Sidebar navigation
 st.sidebar.title("Navigation")
@@ -42,107 +85,62 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.metric(
         "Revenue",
-        "₹12.45M",
-        "+12.6%"
+        f"₹{metrics['total_revenue']/1e6:.2f}M"
     )
 
+projected_profit = metrics["total_revenue"] * 0.32  
 with col2:
     st.metric(
-        "Profit",
-        "₹4.82M",
-        "+7.9%"
+        "Estimated Profit",
+        f"₹{projected_profit/1e6:.2f}M"
     )
 
 with col3:
     st.metric(
-        "Conversion Rate",
-        "5.84%",
-        "+0.9%"
+        "Revenue Lift",
+        f"{metrics['revenue_lift']:.1f}%"
     )
-
+    
 with col4:
     st.metric(
-        "Average Selling Price",
-        "₹1,048",
-        "+₹34"
+        "Average Price",
+        f"₹{metrics['average_price']:,.0f}"
     )
 
 # Generate sample data for overview
-@st.cache_data
-def load_overview_data():
-    np.random.seed(42)
-    customers = generate_customer_data(1000)
-    market_data = generate_market_data()
-    return customers, market_data
+data = load_data()
 
-customers_df, market_df = load_overview_data()
+# customers_df, market_df = load_overview_data()
+customers_df = data["customers"]
+market_df = data["market"]
 
 # AI Pricing Recommendations
 
-st.header("AI Pricing Recommendations")
 
-left, right = st.columns([2,1])
+st.header("AI Recommendations")
 
-with left:
+for recommendation in recommendations[:3]:
 
-    st.success("""
-### Recommendation 1
+    st.info(
+        f"""
+### {recommendation['title']}
 
-**Increase Premium Product pricing by 4.5%**
+Priority: {recommendation['priority']}
 
-Reason
-
-• Demand has increased significantly
-
-• Competitor prices remain higher
-
-• Inventory is reducing rapidly
-
-Expected Revenue Lift
-
-**+9.4%**
-
-Confidence
-
-**95%**
-""")
-
-with right:
-
-    st.warning("""
-### Immediate Opportunities
-
-📈 Premium Pricing
-
-High Impact
-
-----------------
-
-🛍 Flash Sale
-
-Medium Impact
-
-----------------
-
-📦 Inventory Alert
-
-Restock within 4 days
-""")
-# Key Insights Section
-st.header("Key Business Insights")
-st.caption(
-    "Interactive business intelligence to support pricing decisions and product strategy."
-)
+{recommendation['action']}
+"""
+    )
 
 col1, col2 = st.columns(2)
-
+models = get_models()
 with col1:
     st.subheader("Customer Distribution by Segment")
     
     # Simple segmentation for overview
-    segmentation_model = CustomerSegmentation()
+    # segmentation_model = CustomerSegmentation()
+    segmentation_model = models["segmentation"]
     numeric_features = ['income', 'credit_score', 'debt_to_income', 'age', 'savings_rate']
-    segments = segmentation_model.fit_predict(customers_df[numeric_features])
+    segments = segmentation_model.predict(customers_df[numeric_features])
     customers_df['segment'] = segments
     
     segment_counts = pd.Series(segments).value_counts().sort_index()
@@ -160,9 +158,9 @@ with col2:
     
     # Calculate revenue potential
     product_revenue = {
-        'Personal Loans': np.random.normal(15000, 3000, 100).clip(5000, 25000).mean(),
-        'Credit Cards': np.random.normal(8000, 2000, 100).clip(2000, 15000).mean(),
-        'Mortgages': np.random.normal(250000, 50000, 100).clip(150000, 400000).mean()
+        "Personal Loan": data["pricing"]["Personal Loan"]["optimal_price"].mean(),
+        "Credit Card": data["pricing"]["Credit Card"]["optimal_price"].mean(),
+        "Mortgage": data["pricing"]["Mortgage"]["optimal_price"].mean(),
     }
     
     fig_bar = px.bar(
@@ -289,3 +287,4 @@ st.markdown(
     customer insights, pricing experiments and business intelligence.
     """
 )
+

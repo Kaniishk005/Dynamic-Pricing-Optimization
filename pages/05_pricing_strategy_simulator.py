@@ -1,4 +1,5 @@
 import streamlit as st
+from services.pricing_service import simulate_pricing
 
 st.set_page_config(
     page_title="Scenario Simulator",
@@ -53,44 +54,20 @@ with left:
         ]
     )
 
-recommended_price = competitor_price
-
-if demand > 80:
-    recommended_price *= 1.06
-
-if inventory < 30:
-    recommended_price *= 1.05
-
-if marketing > 70:
-    recommended_price *= 1.02
-
-if season == "Festival":
-    recommended_price *= 1.04
-
-if season == "Holiday":
-    recommended_price *= 1.03
-
-
-confidence = 88
-
-if demand > 80:
-    confidence += 4
-
-if inventory < 30:
-    confidence += 3
-
-if marketing > 70:
-    confidence += 2
-
-confidence = min(confidence, 99)
-st.metric(
-    "Recommendation Confidence",
-    f"{confidence}%"
+result = simulate_pricing(
+    competitor_price,
+    demand,
+    inventory,
+    marketing,
+    season,
 )
 
-expected_revenue = recommended_price * demand * 120
-expected_profit = expected_revenue * 0.38
-conversion = 4 + (demand / 100) * 2
+recommended_price = result["recommended_price"]
+ml_price = result["ml_price"]
+expected_revenue = result["expected_revenue"]
+expected_profit = result["expected_profit"]
+conversion = result["conversion"]
+
 current_price = competitor_price
 current_revenue = current_price * demand * 120
 current_profit = current_revenue * 0.35
@@ -149,7 +126,10 @@ with right:
             "Recommended Price",
             f"₹{recommended_price:,.0f}"
         )
-
+        st.metric(
+            "ML Suggested Price",
+            f"₹{ml_price:,.0f}"
+        )
         st.metric(
             "Expected Revenue",
             f"₹{expected_revenue:,.0f}"

@@ -8,14 +8,13 @@ import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-
 from utils.data_generator import generate_customer_data, generate_pricing_data
 from utils.models import PriceOptimizer, CustomerSegmentation
 from utils.metrics import calculate_conversion_rate
 
 st.set_page_config(page_title="Price Optimization", page_icon="📈", layout="wide")
-
-st.title("📈 Price Optimization Engine")
+#  Title
+st.title("Price Optimization Engine")
 st.markdown("### Gradient Boosting for Optimal Financial Product Pricing")
 
 # Sidebar controls
